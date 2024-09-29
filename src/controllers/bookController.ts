@@ -2,14 +2,14 @@ import { Request, Response } from 'express';
 import { body, query, validationResult } from 'express-validator';
 import Book from '../models/Book';
 
-// Create book with validation and error handling
+
 export const createBook = [
-  // Validation rules
+
   body('name').notEmpty().withMessage('Book name is required'),
   body('category').notEmpty().withMessage('Category is required'),
   body('rentPerDay').isNumeric().withMessage('Rent per day must be a number'),
 
-  // Handler
+  
   async (req: Request, res: Response): Promise<void> => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
